@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 和spring整合后 environments配置将废除-->
+    <properties resource="db.properties"/>
+
+    <typeAliases>
+        <typeAlias type="cn.trusteye.mybitis.po.User" alias="user"/>
+<!--
+        <package name="cn.trusteye.mybitis.po" />
+-->
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="sqlmap/user.xml"></mapper>
+<!--
+        <mapper resource="mapper/UserMapper.xml"></mapper>
+-->
+        <!--通过mapper接口加载映射文件
+        规范：需要讲mapper接口类名和mapper.xm映射文件名称保持一致，且在同一个目录中
+        前提：首先使用了mapper规范
+        -->
+        <mapper class="cn.trusteye.mybitis.mapper.UserMapper"></mapper>
+<!--
+        <package name="cn.trusteye.mybitis.mapper"/>
+-->
+    </mappers>
+</configuration>
