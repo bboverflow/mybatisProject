@@ -1,6 +1,6 @@
-package cn.trusteye.mybitis.po;
+package cn.trusteye.mybatis.mapper;
 
-import cn.trusteye.mybitis.mapper.UserMapper;
+import cn.trusteye.mybatis.po.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,20 +15,25 @@ import java.util.List;
  * Created by Rayman on 2017/1/12.
  */
 public class MapUserTest {
-    SqlSessionFactory sqlSessionFactory;
+    private SqlSessionFactory sqlSessionFactory;
     @Before
     public void Inial() throws Exception {
-        String resource = new String("sqlMapConfig.xml");
+        String resource = "SqlMapConfig.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        sqlSessionFactory = new SqlSessionFactoryBuilder()
+                .build(inputStream);
     }
 
     @Test
     public void TestGetUserByID() throws Exception {
         SqlSession sqlSession = sqlSessionFactory.openSession();
+
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
         User user = userMapper.findUserById(1);
+
         System.out.println(user);
+
         sqlSession.close();
     }
 
