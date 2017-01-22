@@ -1,6 +1,6 @@
 package cn.trusteye.mybitis.dao;
 
-import cn.trusteye.mybitis.po.User;
+import cn.trusteye.mybatis.po.User;
 
 /**
  * Created by Rayman on 2017/1/12.

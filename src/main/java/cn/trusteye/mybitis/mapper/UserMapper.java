@@ -1,6 +1,6 @@
 package cn.trusteye.mybitis.mapper;
 
-import cn.trusteye.mybitis.po.User;
+import cn.trusteye.mybatis.po.User;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package cn.trusteye.mybitis.po;
+package cn.trusteye.mybatis.po;
 
 import java.util.Date;
 

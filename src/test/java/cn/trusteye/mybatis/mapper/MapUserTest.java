@@ -1,5 +1,6 @@
 package cn.trusteye.mybatis.mapper;
 
+import cn.trusteye.mybitis.mapper.UserMapper;
 import cn.trusteye.mybatis.po.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -46,5 +47,10 @@ public class MapUserTest {
             System.out.println(user);
         }
         sqlSession.close();
+    }
+
+    @Test
+    public void TestHello(){
+        System.out.println("小明");
     }
 }

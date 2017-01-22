@@ -1,4 +1,4 @@
-package cn.trusteye.mybitis.po;
+package cn.trusteye.mybatis.po;
 
 import cn.trusteye.mybitis.dao.UserDaoImp;
 import org.apache.ibatis.io.Resources;
@@ -7,7 +7,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 /**

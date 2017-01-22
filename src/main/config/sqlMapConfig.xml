@@ -7,7 +7,7 @@
     <properties resource="db.properties"/>
 
     <typeAliases>
-        <typeAlias type="cn.trusteye.mybitis.po.User" alias="user"/>
+        <typeAlias type="cn.trusteye.mybatis.po.User" alias="user"/>
 <!--
         <package name="cn.trusteye.mybitis.po" />
 -->

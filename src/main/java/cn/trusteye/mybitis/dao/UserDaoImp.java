@@ -1,6 +1,6 @@
 package cn.trusteye.mybitis.dao;
 
-import cn.trusteye.mybitis.po.User;
+import cn.trusteye.mybatis.po.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
