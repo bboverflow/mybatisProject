@@ -7,7 +7,13 @@
 注意：使用mapper代理方法开发，namespace有特殊重要的作用
 -->
 
-<mapper namespace="cn.trusteye.mybitis.mapper.UserMapper">
+<mapper namespace="cn.trusteye.mybatis.mapper.UserMapper">
+
+    <resultMap id="userResultMap" type="user">
+        <id column="_id" property="id"/>
+        <result column="_username" property="username"/>
+    </resultMap>
+
 
     <select id="findUserById" parameterType="int" resultType="user">
         SELECT * FROM USER WHERE id=#{value}
@@ -16,6 +22,26 @@
     <select id="findUserByName" parameterType="java.lang.String" resultType="user">
     SELECT * FROM USER WHERE username LIKE #{value}
     </select>
+    
+    <select id="findUserByIdResultMap" parameterType="int" resultMap="userResultMap">
+     SELECT id _id,username _username FROM USER WHERE id=#{value}
+    </select>
+
+    <select id="findUserList" parameterType="UserQueryVo">
+      SELECT * FROM USER
+        <where>
+            <if test="userCustom!=null">
+                <if test="userCustom.sex!=null and userCustom.sex!=''">
+                    and ser.sex = #{userCustom.sex}
+                </if>
+                <if test="userCustom.username!=null and userCustom.username!=''">
+                    and user.sex = #{userCustom.sex}
+                </if>
+            </if>
+        </where>
+    </select>
+    
+    
     <!--
 
         <insert id="insertUser" parameterType="user">
