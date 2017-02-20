@@ -22,25 +22,37 @@
     <select id="findUserByName" parameterType="java.lang.String" resultType="user">
     SELECT * FROM USER WHERE username LIKE #{value}
     </select>
-    
+
+    <!--ResultMap-->
     <select id="findUserByIdResultMap" parameterType="int" resultMap="userResultMap">
      SELECT id _id,username _username FROM USER WHERE id=#{value}
     </select>
 
-    <select id="findUserList" parameterType="UserQueryVo">
+
+    <!--动态SQL片段-->
+    <select id="findUserList" parameterType="UserQueryVo" resultType="userCustom">
       SELECT * FROM USER
         <where>
             <if test="userCustom!=null">
                 <if test="userCustom.sex!=null and userCustom.sex!=''">
-                    and ser.sex = #{userCustom.sex}
-                </if>
-                <if test="userCustom.username!=null and userCustom.username!=''">
                     and user.sex = #{userCustom.sex}
                 </if>
+                <if test="userCustom.username!=null and userCustom.username!=''">
+                    and user.username LIKE '%${userCustom.username}%'
+                </if>
+
+                <!--AND (id=1 OR id=6 OR id=30)-->
+                <if test="ids!=null">
+                    <foreach collection="ids" item="user_id" open="AND (" close=")" separator="OR">
+                        id=#{user_id}
+                    </foreach>
+                </if>
+
+                <!--IN (1,6,30)-->
             </if>
         </where>
     </select>
-    
+
     
     <!--
 

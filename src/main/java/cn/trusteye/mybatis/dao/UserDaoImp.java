@@ -1,4 +1,4 @@
-package cn.trusteye.mybitis.dao;
+package cn.trusteye.mybatis.dao;
 
 import cn.trusteye.mybatis.po.User;
 import org.apache.ibatis.session.SqlSession;
